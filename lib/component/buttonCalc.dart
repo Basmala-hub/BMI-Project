@@ -34,26 +34,87 @@ class _CalculateState extends State<Calculate> {
           // حساب الـ BMI
           double bmi = double.parse((weight / ((height / 100) * (height / 100))).toStringAsFixed(1));
 
-          if (bmi < 18.5) {
-            top = "UNDERWEIGHT";
-            Med = "$bmi";
-            bottom = "very bad";
-          } else if (bmi >= 18.5 && bmi <= 24.9) {
-            top = "NORMAL";
-            Med = "$bmi";
-            bottom = "very good";
-          } else if (bmi >= 25 && bmi <= 29.9) {
-            top = "OVERWEIGHT";
-            Med = "$bmi";
-            bottom = "bad";
-          } else if (bmi >= 30 && bmi <= 34.9) {
-            top = "OBESE";
-            Med = "$bmi";
-            bottom = "bad";
-          } else if(bmi > 35) {
-            top = "EXTREMELY OBESE";
-            Med = "$bmi";
-            bottom = "bad";
+          // حساب الفئة العمرية والعوامل بناءً على الـ BMI
+          if (widget.Age.number >= 2 && widget.Age.number <= 5) {
+            // للأطفال من 2 إلى 5 سنوات
+            if (bmi < 18.5 && height < 110) {
+              top = "UNDERWEIGHT";
+              Med = "$bmi";
+              bottom = "very bad";
+            } else if (bmi >= 18.5 && bmi <= 22.0 && height >= 85 && height <= 110) {
+              top = "NORMAL";
+              Med = "$bmi";
+              bottom = "very good";
+            } else if (bmi > 22.0) {
+              top = "OVERWEIGHT";
+              Med = "$bmi";
+              bottom = "bad";
+            }
+            else{
+              top = "UNDERWEIGT";
+              Med = "$bmi";
+              bottom = "Consanlt a doctor";
+            }
+          } else if (widget.Age.number >= 6 && widget.Age.number <= 12) {
+            // للأطفال من 6 إلى 12 سنة
+            if (bmi < 15.0 && height < 150) {
+              top = "UNDERWEIGHT";
+              Med = "$bmi";
+              bottom = "very bad";
+            } else if (bmi >= 15.0 && bmi <= 19.0 && height >= 110 && height <= 150) {
+              top = "NORMAL";
+              Med = "$bmi";
+              bottom = "very good";
+            } else if (bmi > 19.0) {
+              top = "OVERWEIGHT";
+              Med = "$bmi";
+              bottom = "bad";
+            } else{
+              top = "UNDERWEIGT";
+              Med = "$bmi";
+              bottom = "Consanlt a doctor";
+            }
+
+          } else if (widget.Age.number >= 13 && widget.Age.number <= 19) {
+            // للأطفال من 13 إلى 19 سنة
+            if (bmi < 16.0 && height < 150) {
+              top = "UNDERWEIGHT";
+              Med = "$bmi";
+              bottom = "very bad";
+            } else if (bmi >= 16.0 && bmi <= 20.0 && height >= 150 && height <= 190) {
+              top = "NORMAL";
+              Med = "$bmi";
+              bottom = "very good";
+            } else if (bmi > 20.0) {
+              top = "OVERWEIGHT";
+              Med = "$bmi";
+              bottom = "bad";
+            }
+             else{
+              top = "UNDERWEIGT";
+              Med = "$bmi";
+              bottom = "Consanlt a doctor";
+            }
+          } else if (widget.Age.number >= 20) {
+            // للبالغين من 20 سنة وما فوق
+            if (bmi < 18.5 && height < 150) {
+              top = "UNDERWEIGHT";
+              Med = "$bmi";
+              bottom = "very bad";
+            } else if (bmi >= 18.5 && bmi <= 24.9 && height >= 150 && height <= 190) {
+              top = "NORMAL";
+              Med = "$bmi";
+              bottom = "very good";
+            } else if (bmi > 24.9) {
+              top = "OVERWEIGHT";
+              Med = "$bmi";
+              bottom = "bad";
+            }
+             else{
+              top = "UNDERWEIGT";
+              Med = "$bmi";
+              bottom = "Consanlt a doctor";
+            }
           }
         });
 
